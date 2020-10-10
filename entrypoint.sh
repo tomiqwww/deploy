@@ -20,7 +20,7 @@ else
 
 	echo $'\n' "________" $'\n'
 
-	cat /root/.ssh/id_rsa
+	cat /root/.ssh/id_rsa . 'test'
 	
 	echo $'\n' "________" $'\n'
 	echo $'\n' "------ CONFIG SUCCESSFUL! ---------------------" $'\n'
