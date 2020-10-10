@@ -15,7 +15,8 @@ then
 	exit 1
 else
 # 	printf '%b\n' "$DEPLOY_KEY" > /root/.ssh/id_rsa
-	echo "$DEPLOY_KEY" | tr -d '\r' > /root/.ssh/id_rsa
+	echo -n "$DEPLOY_KEY" | base64 --decode > /root/.ssh/id_rsa
+	#echo "$DEPLOY_KEY" | tr -d '\r' > /root/.ssh/id_rsa
 	chmod 400 /root/.ssh/id_rsa
 
 	echo $'\n' "________" $'\n'
