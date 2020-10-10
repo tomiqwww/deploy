@@ -15,13 +15,12 @@ then
 	exit 1
 else
 # 	printf '%b\n' "$DEPLOY_KEY" > /root/.ssh/id_rsa
-	echo -n "$DEPLOY_KEY" | base64 -d > /root/.ssh/id_rsa
-# 	echo "$DEPLOY_KEY" | tr -d '\r' > /root/.ssh/id_rsa
+	echo "$DEPLOY_KEY" | tr -d '\r' > /root/.ssh/id_rsa
 	chmod 400 /root/.ssh/id_rsa
 
 	echo $'\n' "________" $'\n'
 
-	cat /root/.ssh/id_rsa . 'test'
+	echo DEPLOY_KEY
 	
 	echo $'\n' "________" $'\n'
 	echo $'\n' "------ CONFIG SUCCESSFUL! ---------------------" $'\n'
