@@ -18,9 +18,11 @@ else
 	echo "$DEPLOY_KEY" | tr -d '\r' > /root/.ssh/id_rsa
 	chmod 400 /root/.ssh/id_rsa
 
-	echo $'\n' "TEST MESSEGE" $'\n'
+	echo $'\n' "________" $'\n'
 
-	echo $ cat /root/.ssh/id_rsa
+	cat /root/.ssh/id_rsa
+	
+	echo $'\n' "________" $'\n'
 	echo $'\n' "------ CONFIG SUCCESSFUL! ---------------------" $'\n'
 fi
 
