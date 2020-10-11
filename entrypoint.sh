@@ -14,16 +14,9 @@ then
 	echo $'\n' "------ DEPLOY KEY NOT SET YET! ----------------" $'\n'
 	exit 1
 else
- 	printf '%b\n' "$DEPLOY_KEY" > /root/.ssh/id_rsa
-#	echo -n "$DEPLOY_KEY" | base64 --decode > /root/.ssh/id_rsa
-	#echo "$DEPLOY_KEY" | tr -d '\r' > /root/.ssh/id_rsa
+	printf '%b\n' "$DEPLOY_KEY" > /root/.ssh/id_rsa
 	chmod 400 /root/.ssh/id_rsa
 
-	echo $'\n' "________" $'\n'
-
-	echo DEPLOY_KEY
-	
-	echo $'\n' "________" $'\n'
 	echo $'\n' "------ CONFIG SUCCESSFUL! ---------------------" $'\n'
 fi
 
@@ -50,11 +43,11 @@ then
 	echo $'\n' "------ SYNC SUCCESSFUL! -----------------------" $'\n'
 	echo $'\n' "------ RELOADING PERMISSION -------------------" $'\n'
 
-	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST  -p 22 "sudo chown -R $OWNER:$OWNER $PATH_SOURCE"
-	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST -p 22 "sudo chmod 775 -R $PATH_SOURCE"
-	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST -p 22 "sudo chmod 777 -R $PATH_SOURCE/storage"
-	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST -p 22 "sudo chmod 777 -R $PATH_SOURCE/public"
-	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST -p 22 "cd $PATH_SOURCE && php artisan migrate"
+	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST "sudo chown -R $OWNER:$OWNER $PATH_SOURCE"
+	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST "sudo chmod 775 -R $PATH_SOURCE"
+	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST "sudo chmod 777 -R $PATH_SOURCE/storage"
+	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST "sudo chmod 777 -R $PATH_SOURCE/public"
+	ssh -i /root/.ssh/id_rsa -t $SSH_USER@$SSH_HOST "cd $PATH_SOURCE && php artisan migrate"
 
 	echo $'\n' "------ CONGRATS! DEPLOY SUCCESSFUL!!! ---------" $'\n'
 	exit 0
