@@ -1,11 +1,10 @@
 FROM alpine:3.11.3
 
-MAINTAINER Hoang Ngoc Quy <ngocquyhoang3112@gmail.com>
+MAINTAINER Yaroslav Andriichuk <tomiqwww@gmail.com>
 
 RUN apk update \
 	&& apk upgrade \
 	&& apk add --no-cache rsync openssh-client \
-	&& apk add --no-cache coreutils bash \
 	&& rm -rf /var/cache/apk/*
 
 COPY entrypoint.sh /script/entrypoint.sh
