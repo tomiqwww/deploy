@@ -36,7 +36,7 @@ rsync --progress -azh \
 	--exclude='readme.md' \
 	--exclude='README.md' \
 	-e "ssh -i /root/.ssh/id_github_deploy" \
-	$SSH_USER@$SSH_HOST:$PATH_SOURCE
+	$SSH_USER@$SSH_HOST
 
 if [ $? -eq 0 ]
 then
